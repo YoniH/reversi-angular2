@@ -1,0 +1,16 @@
+@import '../../../style/variables/colors';
+@import '../../../style/variables/commonFixedSizes';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  min-width: $board-size / 2;
+  height: $tile-size;
+  background: $dark-green;
+  color: $white;
+  border: 1px solid $black;
+  border-radius: 4px;
+}

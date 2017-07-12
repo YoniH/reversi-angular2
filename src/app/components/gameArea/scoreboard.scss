@@ -1,0 +1,14 @@
+@import '../../../style/variables/colors';
+
+#scoreBoard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.playerPoints {
+  width: 15px;
+  margin: 10px;
+  text-align: center;
+  color: $dark-green;
+}

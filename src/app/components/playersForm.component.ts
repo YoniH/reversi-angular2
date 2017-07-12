@@ -3,8 +3,6 @@ import Players from '../gameLogic/Players';
 import { GameService } from '../services/game.service';
 import PlayerColors from '../gameLogic/enums/PlayerColors';
 import PlayerData from '../gameLogic/PlayerData';
-import Colors from '../../style/colors';
-import FixedSizes from '../../style/commonFixedSizes';
 
 @Component({
   selector: 'app-players-form',
@@ -16,28 +14,7 @@ import FixedSizes from '../../style/commonFixedSizes';
       <button [disabled]="!isFormLegal()" (click)="submit()">Start New Game</button>
     </div>
   `,
-  styles: [`
-    .newGameForm {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      background: ${Colors.DARK_GREEN};
-      box-sizing: border-box;
-      border: ${FixedSizes.WIDE_BORDER}px solid ${Colors.BLACK};
-      height: ${FixedSizes.BOARD_SIZE}px;
-      margin-top: 2px;
-      padding-top: 2px;
-      padding-bottom: 10px;
-    }
-    .title {
-      justify-self: start;
-      font-size: 15px;
-      font-weight: bold;
-      text-decoration: underline;
-      color: white;
-    }
-  `]
+  styleUrls: ['playersForm.scss']
 })
 export class PlayersFormComponent implements OnInit {
   private static readonly MIN_ALLOWED_LEVEL = 1;

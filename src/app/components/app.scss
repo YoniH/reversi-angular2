@@ -1,0 +1,28 @@
+@import '../../style/variables/colors';
+
+:host {
+  background: $light-green;
+}
+
+.general {
+  font-family: "Comic Sans MS";
+  margin: 10px;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+app-instructions {
+  flex: 1 1 0;
+}
+
+app-game {
+  flex: 0 0 auto;
+}
+
+app-players-form {
+  flex: 1 1 0;
+}

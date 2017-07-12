@@ -1,0 +1,13 @@
+@import '../../../style/variables/colors';
+@import '../../../style/variables/commonFixedSizes';
+
+div {
+  width: $tile-size;
+  height: $tile-size;
+  background: $dark-green;
+  border: 1px solid $black;
+}
+
+.flipping-preview {
+  border: 1px solid $red;
+}

@@ -1,0 +1,9 @@
+@import '../../../style/variables/commonFixedSizes';
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: $board-size / 4;
+  margin-right: $board-size / 4;
+}

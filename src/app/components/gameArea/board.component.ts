@@ -19,22 +19,7 @@ import Move from '../../gameLogic/Move';
         </div>
       </div>
   `,
-  styles: [`
-    .board {
-      display: flex;
-      flex-direction: column;
-      border-spacing: 0px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-    .row {
-      display: flex;
-      flex-direction: row;
-    }
-    app-tile {
-      margin: 2px;
-    }
-  `],
+  styleUrls: ['board.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BoardComponent {

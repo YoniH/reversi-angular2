@@ -1,0 +1,20 @@
+@import '../../../style/variables/commonFixedSizes';
+@import '../../../style/variables/colors';
+
+circle {
+  cx: $tile-size / 2;
+  cy: $tile-size / 2;
+  r: $tile-size / 3;
+}
+
+.black-player {
+  fill: $black
+}
+
+.white-player {
+  fill: $white
+}
+
+.move-preview {
+  opacity: 0.35;
+}

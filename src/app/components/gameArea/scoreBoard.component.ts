@@ -1,7 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import Score from '../../gameLogic/Score';
 import PlayerColors from '../../gameLogic/enums/PlayerColors';
-import Colors from '../../../style/colors';
 
 @Component({
   selector: 'app-scoreboard',
@@ -24,19 +23,7 @@ import Colors from '../../../style/colors';
       </app-scoreboard-player-presentation>
     </div>
   `,
-  styles: [`
-    #scoreBoard {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
-    .playerPoints {
-      width: 15px;
-      margin: 10px;
-      text-align: center;
-      color: ${Colors.DARK_GREEN};
-    }
-  `],
+  styleUrls: ['scoreboard.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScoreBoardComponent {

@@ -1,6 +1,4 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import Colors from '../../style/colors';
-import FixedSizes from '../../style/commonFixedSizes';
 
 @Component({
   selector: 'app-instructions',
@@ -15,30 +13,7 @@ import FixedSizes from '../../style/commonFixedSizes';
       </ul>
     </div>
   `,
-  styles: [`
-    .instructionsDiv {
-      display: flex;
-      flex-direction: column;
-      overflow: auto;
-      box-sizing: border-box;
-      border: ${FixedSizes.WIDE_BORDER}px solid black;
-      height: ${FixedSizes.BOARD_SIZE}px;
-      background: ${Colors.DARK_GREEN};
-      color: ${Colors.WHITE};
-      font-size: 15px;
-      line-height: 170%;
-    }
-    .title {
-      align-self: center;
-      font-weight: bold;
-      text-decoration: underline;
-    }
-    ul {
-      margin-top: 7px;
-      margin-bottom: 0px;
-      margin-right: 5px;
-    }
-  `],
+  styleUrls: ['instructions.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InstructionsComponent {

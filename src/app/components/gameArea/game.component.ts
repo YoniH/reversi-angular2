@@ -7,7 +7,6 @@ import Move from '../../gameLogic/Move';
 import PlayerColors from '../../gameLogic/enums/PlayerColors';
 import GameStatuses from '../../gameLogic/enums/GameStatuses';
 import ComputerMoveStatuses from '../../gameLogic/enums/ComputerMoveStatuses';
-import FixedSizes from '../../../style/commonFixedSizes';
 
 @Component({
   selector: 'app-game',
@@ -39,15 +38,7 @@ import FixedSizes from '../../../style/commonFixedSizes';
       </app-status-alert>
     </div>
   `,
-  styles: [`
-    .game {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-left: ${FixedSizes.BOARD_SIZE / 4}px;
-      margin-right: ${FixedSizes.BOARD_SIZE / 4}px;
-    }
-  `]
+  styleUrls: ['game.scss']
 })
 export class GameComponent implements OnInit {
   playerColors = PlayerColors;

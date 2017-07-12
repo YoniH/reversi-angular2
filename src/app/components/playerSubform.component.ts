@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core'
 import PlayerColors from '../gameLogic/enums/PlayerColors';
-import FixedSizes from '../../style/commonFixedSizes';
-import Colors from '../../style/colors';
 
 @Component({
   selector: 'app-player-subform',
@@ -27,44 +25,7 @@ import Colors from '../../style/colors';
       </div>
     </div>
   `,
-  styles: [`
-    .container {
-      display: flex;
-      flex-direction: row;
-    }
-    .playerName {
-      margin-bottom: 10px;
-    }
-    .pieceContainer {
-      align-self: flex-start;
-      width: ${FixedSizes.TILE_SIZE}px;
-      height: ${FixedSizes.TILE_SIZE}px;
-      margin: -2px 5px 5px 5px;
-    }
-    .computerPlayerDefinition {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      margin-top: 8px;
-      font-size: 12px;
-    }
-    .levelInput {
-      width: 2em;
-      margin-left: 3px;
-    }
-    .visible {
-      visibility: visible;
-    }
-    .hidden {
-      visibility: hidden;
-    }
-    .black {
-      color: ${Colors.BLACK};
-    }
-    .white {
-      color: ${Colors.WHITE};
-    }
-  `]
+  styleUrls: ['playerSubform.scss']
 })
 export class PlayerSubformComponent {
   @Input() playerColor: PlayerColors;

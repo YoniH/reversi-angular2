@@ -1,8 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import PlayerColors from '../../gameLogic/enums/PlayerColors';
 import { TileInteractionService } from '../../services/tileInteraction.service';
-import Colors from '../../../style/colors';
-import FixedSizes from '../../../style/commonFixedSizes';
 
 @Component({
   selector: 'app-tile',
@@ -20,17 +18,7 @@ import FixedSizes from '../../../style/commonFixedSizes';
       </app-piece>
     </div>
   `,
-  styles: [`
-    div {
-      width: ${FixedSizes.TILE_SIZE}px;
-      height: ${FixedSizes.TILE_SIZE}px;
-      background: ${Colors.DARK_GREEN};
-      border: 1px solid ${Colors.BLACK};
-    }
-    .flipping-preview {
-      border: 1px solid ${Colors.RED};
-    }
-  `],
+  styleUrls: ['tile.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TileComponent {

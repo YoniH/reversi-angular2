@@ -1,7 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import PlayerColors from '../../gameLogic/enums/PlayerColors';
-import Colors from '../../../style/colors';
-import FixedSizes from '../../../style/commonFixedSizes';
 
 @Component({
   selector: 'app-piece',
@@ -14,22 +12,7 @@ import FixedSizes from '../../../style/commonFixedSizes';
       />
     </svg>
   `,
-  styles: [`
-    circle {
-      cx: ${FixedSizes.TILE_SIZE / 2}px;
-      cy: ${FixedSizes.TILE_SIZE / 2}px;
-      r: ${FixedSizes.TILE_SIZE / 3}px;
-    }
-    .black-player {
-      fill: ${Colors.BLACK}
-    }
-    .white-player {
-      fill: ${Colors.WHITE}
-    }
-    .move-preview {
-      opacity: 0.35;
-    }
-  `],
+  styleUrls: ['piece.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PieceComponent {

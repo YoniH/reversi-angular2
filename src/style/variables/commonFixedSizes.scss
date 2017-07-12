@@ -1,0 +1,6 @@
+$wide-border: 5px;
+
+$tile-size: 30px;
+$tile-margin: 2px;
+$tile-border: 1px;
+$board-size: 8 * ($tile-size + 2 * $tile-margin + 2 * $tile-border) - 2 * $tile-margin;
