@@ -10,6 +10,7 @@ import {Component} from '@angular/core';
         <app-game></app-game>
         <app-players-form></app-players-form>
       </div>
+      <app-footer></app-footer>
     </div>
   `,
   styleUrls: ['app.scss']

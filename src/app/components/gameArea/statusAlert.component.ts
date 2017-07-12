@@ -3,17 +3,17 @@ import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from 
 @Component({
   selector: 'app-status-alert',
   template: `
-    <div class="container">
+    <div [ngClass]="{container: true, hidden: text === null }">
       <p>{{text}}</p>
       <button *ngIf="confirmButtonText" (click)="confirm()">{{confirmButtonText}}</button>
     </div>
   `,
-  styleUrls: ['ststusAlert.scss'],
+  styleUrls: ['statusAlert.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatusAlertComponent {
   @Input() text: string;
-  @Input() confirmButtonText: boolean;
+  @Input() confirmButtonText: string;
 
   @Output() onConfirmed = new EventEmitter();
 

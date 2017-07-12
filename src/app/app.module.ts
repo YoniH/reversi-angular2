@@ -14,6 +14,8 @@ import { StatusAlertComponent } from './components/gameArea/statusAlert.componen
 import { PlayersFormComponent } from './components/playersForm.component';
 import { PlayerSubformComponent } from './components/playerSubform.component';
 import { InstructionsComponent } from './components/instructions.component';
+import { FooterComponent } from './components/footer.component';
+
 import { GameService } from './services/game.service';
 import { TileInteractionService } from './services/tileInteraction.service';
 
@@ -30,7 +32,8 @@ import { TileInteractionService } from './services/tileInteraction.service';
     StatusAlertComponent,
     PlayersFormComponent,
     PlayerSubformComponent,
-    InstructionsComponent
+    InstructionsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

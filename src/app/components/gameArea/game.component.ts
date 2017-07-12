@@ -25,15 +25,9 @@ import ComputerMoveStatuses from '../../gameLogic/enums/ComputerMoveStatuses';
       >
       </app-scoreboard>
       <app-status-alert
-        *ngIf="gameState.gameStatus === gameStatuses.PLAYER_CANT_PLAY"
-        [text]="'Can\\'t play'"
-        [confirmButtonText]="'Ok'"
-        (onConfirmed)="onCantPlayClicked()"
-      >
-      </app-status-alert>
-      <app-status-alert
-        *ngIf="gameState.gameStatus === gameStatuses.ENDED"
-        [text]="getGameEndText()"
+        [text]="statusAlert ? statusAlert.text : null"
+        [confirmButtonText]="statusAlert ? statusAlert.confirmButtonText : null"
+        (onConfirmed)="statusAlert && statusAlert.onConfirmed ? statusAlert.onConfirmed() : undefined"
       >
       </app-status-alert>
     </div>
@@ -42,13 +36,14 @@ import ComputerMoveStatuses from '../../gameLogic/enums/ComputerMoveStatuses';
 })
 export class GameComponent implements OnInit {
   playerColors = PlayerColors;
-  gameStatuses = GameStatuses;
 
   players: Players;
   gameState: GameState;
   computerMoveProgress: { status: ComputerMoveStatuses, move?: Move };
 
   isComputerPlayerTurn: boolean;
+
+  statusAlert: {text: string, confirmButtonText?: string, onConfirmed?: () => void};
 
   preview: { move: Move, tilesToBeFlipped: { row: number, col: number }[] } = null;
 
@@ -65,6 +60,8 @@ export class GameComponent implements OnInit {
 
     this.gameService.gameState.subscribe(x => {
       this.gameState = x;
+
+      this.statusAlert = this.getStatusAlert();
 
       this.isComputerPlayerTurn = this.players.get(x.turn).isComputerPlayer;
 
@@ -133,7 +130,24 @@ export class GameComponent implements OnInit {
     this.gameService.switchTurnWithoutMove();
   }
 
-  getGameEndText() {
+  getStatusAlert() {
+    switch (this.gameState.gameStatus) {
+      case GameStatuses.PLAYER_CANT_PLAY:
+        return {
+          text: this.players.get(this.gameState.turn).name + ' can\'t play',
+          confirmButtonText: 'Ok',
+          onConfirmed: () => this.onCantPlayClicked()
+        };
+      case GameStatuses.ENDED:
+        return {
+          text: this._getGameEndText()
+        };
+      default:
+        return null;
+    }
+  }
+
+  private _getGameEndText() {
     if (this.gameState.winner === PlayerColors.BLACK || this.gameState.winner === PlayerColors.WHITE) {
       const name = this.players.get(this.gameState.winner).name;
       return `${name} ${name.toLowerCase() === 'you' ? 'win' : 'wins'}!`;
