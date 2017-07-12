@@ -1,14 +1,16 @@
 # Reversi Angular 2
 
+[Reversi](http://en.wikipedia.org/wiki/Reversi) is a board game for two players, played in turns. It is implemented here in Angular 2, with the option to set each player as a human player or a computer player.
+
 ## Development Procedures
 
 This project was initially generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
 
-### Development server
+### Development Server
 
 Run `ng serve` (or `npm start`) for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-### Code scaffolding
+### Code Scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
 
@@ -37,3 +39,29 @@ To deploy, I used [angular-cli-ghpages](https://github.com/angular-buch/angular-
 ### Further help on Angular CLI
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Computer Player Artificial Intelligence in this Implementation
+
+Reversi is a [Zero-Sum Game](https://en.wikipedia.org/wiki/Zero-sum_game). A classic AI algorithm for two-player zero-sum games is [Minmax](https://en.wikipedia.org/wiki/Minimax#Minimax_algorithm_with_alternate_moves). For the computer player I used the [Alpha-Beta](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning) algorithm, which is an optimized version of Minmax.
+
+Here's a very high-level description of how it works:
+
+1. When it's the computer's turn, the algorithm constructs a game tree for a limited number of levels. This is how the computer "sees moves ahead". However, seeing more than a few moves ahead is not practical since the number of nodes in the tree grows exponentially with the number of the tree levels. Constructing a complete game tree would take just about forever, and so after a few levels, the construction stops and the farthest future boards (the tree leaves) are examined.
+
+2. On each of those future boards, the algorithm calls a heuristic function, which evaluates the board and returns a number estimating how good or bad it is for each player:
+    * A positive number means that the black player leads. A greater number means greater advantage. Infinity means victory for the black.
+    * A negative number means that the white player leads. A greater number (in absolute value) means greater advantage. Minus inifinity means victory for the white.
+    * Zero means tie.
+    
+    This function is the core of the computer player's artificial intelligence. It is also the only part that is specific to a particular game (Reversi in this case). A Chess computer player may be implemented by applying the same algorithm, only with a different heuristic function that is suitable for Chess.
+
+3. The numbers returned by the function are then assigned up the tree, assuming that each player always chooses the best possible move for them. 
+When the root is assigned, it is known what is the branch (move) that will lead to the estimated-best future board, and so that move is chosen. 
+A detailed example of that final stage can be found [here](http://en.wikipedia.org/wiki/Minimax#Example_2).
+
+### The Heuristic Function in this Implementation
+
+The heuristic function in this implementation generally works like this:
+* A winning board is ofcourse the best board, and it's better to win by the biggest possible difference.
+* Corners are very important in Reversi. A board is very good for a player if the player has taken more corners than the opponent.
+* In the beginning of a game it's good to have less pieces, but later on it's better to have more.
