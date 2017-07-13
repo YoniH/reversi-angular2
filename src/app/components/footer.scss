@@ -12,7 +12,12 @@
   align-items: center;
 }
 
+.github-icon-link {
+  display: flex;
+}
+
 .github-icon {
+  align-self: center;
   width: 20px;
   height: 20px;
   margin-right: 8px;

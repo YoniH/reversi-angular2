@@ -5,7 +5,7 @@ import {Component} from '@angular/core';
   template: `
     <div class="container">
       <div class="content">
-        <a [href]="linkToGitHubProject" target="_blank">
+        <a class="github-icon-link" [href]="linkToGitHubProject" target="_blank">
           <img class="github-icon" src="assets/img/GitHub-Mark-120px-plus.png" />
         </a>
         <span>Project on GitHub: <a [href]="linkToGitHubProject" target="_blank">{{linkToGitHubProject}}</a></span>
